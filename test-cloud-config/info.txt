@@ -12,4 +12,3 @@
 This will fetch updated properties without server-restart
 
 
-
