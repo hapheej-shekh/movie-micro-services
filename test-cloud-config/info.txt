@@ -1,0 +1,15 @@
+
+1. Add actuator dependency
+2. Add below properties
+	management.endpoint.info.enabled=true
+	management.endpoints.web.exposure.include=refresh,info,health
+	management.endpoints.web.base-path=/actuator
+3. Add '@RefreshScope' to bean/config class, where updated props need to reflect
+4. Update config file in github repository
+5. Refresh Actuator=> http://localhost:8084/test-cloud-config/actuator/refresh
+6. Get updated detail=> http://localhost:8084/test-cloud-config/config
+
+This will fetch updated properties without server-restart
+
+
+
