@@ -10,4 +10,16 @@ This tutorial has been for learning micro-services from Kaushik, JavaBrains
 	
 Let Catalog Service Call Other 2 Services
 	
+	Run/Install MicroServices
+	-------------------------
+	
+	1. Run/Install Spring-Cloud-Config-Server
+		Since all other service depends on it for configuration detail
+		If using cloud based configuration
+	2. Run/Install Discovery Server
+	3. Run/Install other microservices based on their sequence if any
+
+	
+	
+	
 	

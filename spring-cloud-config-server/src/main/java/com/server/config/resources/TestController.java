@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("home")
-public class HomeController {
+@RequestMapping("test")
+public class TestController {
 
 	@Autowired
 	private Environment env;
@@ -19,9 +19,9 @@ public class HomeController {
 	
 	
 	@RequestMapping("config")
-	public ResponseEntity<String> configDetail() {
+	public ResponseEntity<Object> configDetail() {
 		
-		System.out.println(configGreetingPerson);
+		System.out.println("configGreetingPerson: "+configGreetingPerson);
 		
 		return ResponseEntity.ok(env.toString());
 	}
