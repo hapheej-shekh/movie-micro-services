@@ -1,0 +1,80 @@
+SpringBoot Cloud Config Server
+==============================
+
+1. Add below dependency with their management
+
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+2. Annotate Springboot main class with @EnableConfigServer
+
+3. Specify below properties in local properties file 
+   [port 8888 mostly we use for configuration server]
+   [application-remote.properties is file name, so active profile: remote]
+
+server.port: 8888
+#Active profile name 'remote'
+spring.profiles.active=remote
+#URI of repositry, where config file located
+spring.cloud.config.server.git.uri=https://github.com/*****/movie-micro-services/
+#Git username & Password
+spring.cloud.config.server.git.uri.username=*****
+spring.cloud.config.server.git.uri.password=*****
+	
+4. Access Properties as in below-
+
+    http://<Host:Port>/<file-name>/<active-profile-name>
+
+    http://localhost:8888/application-remote/remote
+
+
+
+Access/Use Config Properties Using Client
+=========================================		
+
+1. Add below dependency to access remote properties
+
+	<dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-config</artifactId>
+	  <spring-cloud.version>2021.0.3</spring-cloud.version>
+    </dependency>
+
+	<dependencyManagement>
+	    <dependencies>
+	      <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-dependencies</artifactId>
+	        <version>${spring-cloud.version}</version>
+	        <type>pom</type>
+	        <scope>import</scope>
+	      </dependency>
+	    </dependencies>
+	</dependencyManagement>
+
+2. In application.properties file, specify remote git URL and application file name
+
+	#Configuration from cloud server
+	spring.config.import=configserver:http://localhost:8888
+	
+	#File in git repository
+	spring.application.name=application-remote
+
+This will now refer config properties from Git Repo
+
+
+

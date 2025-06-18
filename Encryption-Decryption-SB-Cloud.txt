@@ -1,0 +1,29 @@
+Encryption/Decryption [Using Oracle JCE jars]
+=====================
+
+If you are using java below-8 follow below steps [After java 8 not required]
+
+1. Then Download=> Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files
+
+2. Move inside C:/Program Files/Java/jdk1.8.0_73/jre/lib/security
+
+3. Take backup of original files
+
+4. Extract download and replace security files 
+
+5. In Springboot Cloud Server, add below key-
+	encrypt.key=myencryptkey
+
+This is the shared key is used to encrypt or decrypt the configuration properties by the 
+spring cloud configuration server
+
+6. Call Post=> http://localhost:8888/encrypt
+	by passing actual github password say 'MyPassword' in body as raw [Key pair not required, only value]
+
+7. Call Post=> http://localhost:8888/decrypt
+	To decrypt the encrypted value [pass value in body as raw value]
+
+8. Add encrypted value to password, prefixed with {cypher}
+	spring.cloud.config.server.git.uri.password=
+	"{cipher}d3763121c62e1ec17b01asfg435650bebc5bd1dbea9af1dd0861e899f9c77143"
+

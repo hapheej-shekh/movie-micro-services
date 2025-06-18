@@ -1,0 +1,74 @@
+Externalize Configuration Steps
+===============================
+
+Properties From Command Arguments
+---------------------------------
+
+1. Provide property from command line as below-
+
+>java -jar -Dserver.port=8089 myjar.jar
+
+2. Place application.properties file parallel to Application Jar File
+=>Springboot will override values of internal file with external supplied file
+
+3. java -jar -Dspring.config.name=dbconfig -Dspring.config.locatio=D:\config myjar.jar
+=> Springboot will read file from supplied location with provided name
+
+4. Specify active profile from command line
+
+>java -jar myjar.jar --spring.profiles.active=prod
+
+
+Selecting Beans Based On Profile
+--------------------------------
+
+=> By default all the beans are Instantiated, If no @Profile provided
+
+@Repository
+@Profile("dev")
+class Development {
+
+}
+
+@Repository
+@Profile("prod")
+class Production {
+
+}
+
+
+@Value Annotation Tricks
+------------------------
+[properties]
+my.address: Harrai
+my.list: 1, 2, 3, 4, 5
+my.db.values: {conString:'http://127.0.0.1/abc', username:'sheikh', password: '*****'}
+
+1. @Value("${my.address}")->It will read and assign value of 'my.address' to variable
+	If value does not exists, application will not bootstrap/start
+
+2. @Value("${my.address: Narsinghpur}")->It will read and assign value of 'my.address' to variable,
+	If value not present it will assign default value 'Narsinghpur'
+
+3. @Value("Value assignment directly")-> It will assign value inside quotes to variable
+
+4. @Value("${my.list}")-> It will read values and assign to ArrayList/List variable
+
+5. @Value("#{${my.db.values}}")-> It will assign values to Map<String, String>
+
+
+@ConfigurationProperties(prefix)
+--------------------------------
+
+Create relavent group/prefixed properties and define class with all relavent variables
+Annotate class with @Configuration & @ConfigurationProperties
+It will read all properties and configure with auto-configuration
+
+
+Environment Object/Config
+-------------------------
+Should not use Environment config if possible yet all [Not good habbit]
+
+@Autowire
+private Environment env;
+

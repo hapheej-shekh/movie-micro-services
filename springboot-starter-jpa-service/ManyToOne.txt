@@ -1,0 +1,34 @@
+
+Url-> http://localhost:8085/starter-jpa-service/AllJoinTest/manyToOne
+
+Data-1
+------
+{
+	"id":7,
+	"name":"Java",
+	"location":"Central Lib",
+	"student":
+		{
+			"id":3,
+			"name":"Arham",
+			"depart":"IT"
+		}
+}
+
+Data-2
+------
+{
+	"id":8,
+	"name":"C++",
+	"location":"Central Lib",
+	"student":
+		{
+			"id":3,
+			"name":"Arham",
+			"depart":"IT"
+		}
+}
+
+
+
+

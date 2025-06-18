@@ -1,0 +1,13 @@
+This tutorial has been for learning micro-services from Kaushik, JavaBrains
+
+	Micro Service
+	-------------
+	
+	1. Movie Catalog Service
+	2. Movie Info Service
+	3. Movie Rating Data Service
+	   [Implement better Way Service Discovery]
+	
+Let Catalog Service Call Other 2 Services
+	
+	

@@ -1,0 +1,34 @@
+Step-1 Persistence[Provider] Gives EntityManagerFactory
+	   ================================================
+	   
+1. persiatence.xml file -> persistence-unit name provided
+
+2. PersistenceProvider -> reads persiatence.xml file against 'persistence-unit' name
+
+3. PersistenceProvider creates EntityManagerFactory using its method->createEntityManagerFactory
+
+
+Step-2 EntityManagerFactory Gives EntityManager
+	   ========================================
+	  
+1. EntityManagerFactory calls its method createEntityManager
+2. It internally calls createEntityManager method of -> SessionFactoryImpl class
+3. createEntityManager builds/opens session
+   ->Sets autoJoinTransactions for synchronized flow based on condition::default true
+   ->While building session sets various parameters to it 
+	  [autoClear, autoClose, queryParametersValidationEnabled]
+4. Finally creates Sessions, Wraps inside EntityManager and returns its reference
+5. Returns EntityManager
+
+
+Step-3 EntityManager Gives EntityTransaction
+	   =====================================
+
+Finally EntityManager calls AbstractSharedSessionContract[internal class of hibernate] 
+via its getTransaction() method, to obtain transaction object
+
+
+
+
+
+

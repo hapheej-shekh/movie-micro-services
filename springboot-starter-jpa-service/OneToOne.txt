@@ -1,0 +1,29 @@
+
+Url-> http://localhost:8085/starter-jpa-service/AllJoinTest/oneToOne
+
+Data-1
+------
+{
+	"id":4,
+	"name":"Arham",
+	"depart":"IT",
+	"library1":{
+		"id":9,
+		"name":"Java",
+		"location":"Central Lib"
+	}
+}
+
+Data-2
+------
+{
+	"id":5,
+	"name":"Arham",
+	"depart":"IT",
+	"library1":{
+		"id":10,
+		"name":"Java",
+		"location":"Central Lib"
+	}
+}
+

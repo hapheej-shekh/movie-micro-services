@@ -1,0 +1,182 @@
+MicroService Steps
+==================
+
+1. Create multiple independent services
+2. Call One service from Another one [based on requirement]
+	1. Call Using Rest-Template Bean
+	2. Call Using WebClient Bean
+
+
+Create Rest Template Bean
+-------------------------
+@Bean
+public RestTemplate userDefinedMethodName() {
+    return new RestTemplate();
+}
+
+Create WebClient Bean
+---------------------
+@Bean
+public WebClient.Builder userDefinedBuilder(){
+    return WebClient.builder();
+}
+
+
+Using Rest Template
+-------------------
+Call using rest template as show below-
+
+List<Employee> emps = restTemp.getForObject("http://localhost:8082/movie-info/findAll", Employee.class);
+
+
+Using WebClient
+---------------
+
+ResponseEntity<List<Movie>> movies = builder.build().get()
+        .uri("http://localhost:8082/movie-info/findAll").retrieve().toEntityList(Movie.class).block();
+
+Remove URL Hardcoding
+----------------------
+To remove URL hard wiring, Eureka server is user, Create One more service which will act as Eureka Server
+we need to annotate Eureka Main class with @EnableEurekaServer annotation, 
+And also make it @SpringBootApplication
+
+This will work as Eureka Server, to register all URL of different micro services
+
+In all Micro Services add Eureka dependency in pom.xml, And provide all micro service name using
+spring.application.name property=Movie-Info-Service
+Default port of Eureka is 8761
+
+Replace All Url Hardcoding with Micro Service Registered Name
+-------------------------------------------------------------
+
+restTemp.getForObject("http://Movie-Info-Service/movie-info/findAll", Employee.class);
+
+builder.build().get()
+        .uri("http://Movie-Info-Service/movie-info/findAll").retrieve().toEntityList(Movie.class).block();
+
+
+Now while calling other micro service, Eureka will provide registered address and port of that service
+
+
+Fault Tolerance In MicroServices
+================================
+
+Scenerio-1::    Service Goes Down
+
+Solution::	1. Run Multiple/Duplicate Instances of application
+
+Scenerio-2::	Microservice Instance is Slow [network issue]
+
+Solution::	By Implementing TimeOut Facility, providing fixed run time
+	
+		Other solution is-> don't send any request to slow service for a while, and in interval
+		of time check if its recovered
+
+		[Limit Maximum Thread/Request Allowed ]
+
+
+Circuit Breakers [Needed Bcz]
+=============================
+1. Failing fast [Not call service if taking to much time Or timeout]
+2. Fallback functionality [backup for service]
+3. Atomatic recovery
+
+
+How To Handle Circuit Break
+===========================
+
+1. Use Fallback [Default Response]
+2. Throw an Error [Not Good]
+3. Cache previous response and use that when Service is Down [Best Solution]
+
+Hystrix For Fault Tolerance
+===========================
+Created by Netflix
+Implements Circuit breaker pattern
+It needs config parameters and it works for Circuit breakers [service breakdown]
+[Its no longer in Active Development]
+
+
+Hystrix With Spring Boot
+========================
+1. Add hystrix dependency
+	[spring-cloud-starter-netflix-hystrix]
+
+2. Add @EnableCircuitBreaker to application class/main
+   [Add this application in microservice which having chance of fault tolerance]
+
+3. Add @HystrixCommand to the method which needs circuit breaker
+
+4. Configure Hystrix behaviour/config parameter
+
+How Does Hystrix Work
+=====================
+hystrix wraps our API class, to response dummy/fallback data if service goes down
+
+Proxy Class/Method Work With Hystrix
+====================================
+
+class A_Controller {
+
+   void controllerMethod{
+    m2();
+    m3();
+   }
+
+   @HystrixCommand
+   void m2(){}
+   
+   @HystrixCommand
+   void m3(){}
+}
+
+If Same controller method calls other @HystrixCommand annotated methods of same class
+Hystrix will not work
+
+For this scenario-> Define m2()&m3() method in other class and call from controllerMethod
+
+DrawBack
+========
+Say Movie service is down, and we have 5 actual rating
+But with dummy movie, if we send rating, this will be useless
+
+Bulkhead Pattern Of Hystrix
+===========================
+In this pattern we creates pool or bucket for making segregation of incoming requests
+Add below properties to @HystrixCommand annotation for bulkhead pattern
+
+@HystrixCommand(threadPoolKey="movieInPattern", threadPoolProperties({
+    @HystrixProperty(name="coreSize", value="20"),
+    @HystrixProperty(name="maxQueueSize", value="10"),
+})
+
+threadPoolKey-> We can share it between multiple methods [Can also have separate pool for each methods]
+coreSize-> Max thread/request can wait
+maxQueueSize-> How many request waiting in queue
+
+Hystrix DashBoard
+=================
+
+1. Add Dashboard&Actuator dependencies-
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+    <version>2.2.10.RELEASE</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+2. Add below property
+
+management.endpoints.web.exposure.include=hystrix.stream
+
+3. Use URL for Dashboard
+   -> http://<Host:Port>/<App_Name>/hystrix
+   -> http://localhost:8081/movie-catalog/hystrix
+

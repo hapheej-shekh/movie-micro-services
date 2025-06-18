@@ -1,0 +1,24 @@
+Actuator Configuration
+======================
+
+1. Add below dependency
+
+    <dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+2. Add below property to application.properties
+
+    management.endpoints.web.exposure.include=*
+
+3. Access Actuator endpoints using below URL-
+
+   http://<Host:Port>/<App-Name>/actuator
+   OR
+   https://<Host:Port>/<App-Name>/actuator
+
+==> http://localhost:8084/config-demo/actuator
+
+
+

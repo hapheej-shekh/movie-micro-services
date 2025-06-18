@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "f4d5f8d9-3a3c-40ec-8cec-bae657da2db4",
+		"name": "Movie-Micro-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/movie-catalog/webclient/findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/movie-catalog/webclient/findAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie-catalog",
+						"webclient",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/movie-catalog/resttemplate/findEureka",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/movie-catalog/resttemplate/findEureka",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie-catalog",
+						"resttemplate",
+						"findEureka"
+					]
+				},
+				"description": "Movie list with their respective ratings"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/movie-catalog/resttemplate/findAllSeparate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/movie-catalog/resttemplate/findAllSeparate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie-catalog",
+						"resttemplate",
+						"findAllSeparate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/movie-catalog/resttemplate/findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/movie-catalog/resttemplate/findAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie-catalog",
+						"resttemplate",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/movie-catalog/resttemplate/findEnhanced",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/movie-catalog/resttemplate/findEnhanced",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"movie-catalog",
+						"resttemplate",
+						"findEnhanced"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/application-remote/remote",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/application-remote/remote",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"application-remote",
+						"remote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8084/cloud-config-service/env",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/cloud-config-service/env",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"cloud-config-service",
+						"env"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8084/cloud-config-service/config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/cloud-config-service/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"cloud-config-service",
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/decrypt/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "d3763121c62e1ec17b0115413a2650bebc5bd1dbea9af1dd0861e899f9c77870"
+				},
+				"url": {
+					"raw": "http://localhost:8888/decrypt/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"decrypt",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/encrypt/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "lucifer@49"
+				},
+				"url": {
+					"raw": "http://localhost:8888/encrypt/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"encrypt",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8084/config-service/config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/config-service/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"config-service",
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8085/starter-jpa-service/employee/paginationEmp/0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "11",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "salary",
+							"value": "31",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8085/starter-jpa-service/employee/paginationEmp/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"starter-jpa-service",
+						"employee",
+						"paginationEmp",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8085/starter-jpa-service/employee/paginationEmp/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8085/starter-jpa-service/employee/paginationEmp/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"starter-jpa-service",
+						"employee",
+						"paginationEmp",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

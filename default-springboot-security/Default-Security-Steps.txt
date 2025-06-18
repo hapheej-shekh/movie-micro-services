@@ -1,0 +1,19 @@
+Steps To Default Security
+=========================
+
+1. Add starter-security to pom file
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+2. Add users-> name, password and roles to spring configuration-
+
+	spring.security.user.name:sheikh
+	spring.security.user.password:sheikh
+	spring.security.user.roles=ADMIN,USER
+
+
+
+

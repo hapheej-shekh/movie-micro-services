@@ -1,0 +1,89 @@
+Persisting Entities Flow
+========================
+
+1. Saving an entity [can be] performed with the CrudRepository.save(…) method
+
+2. It persists or merges the given entity by using the underlying JPA EntityManager
+
+3. [If entity has not yet been persisted]
+   Spring Data JPA saves the entity with a call to the entityManager.persist(…) method
+  
+4. [Otherwise::If entity already persisted]
+   It calls the entityManager.merge(…) method
+   
+
+JPA Repository Using Xml Configuration
+--------------------------------------
+
+We can set JPA repository using 'jpa:repositories' property in xml file
+It reads base-package and reads all beans annotated with @Repository
+[persistence.xml]
+-----------------
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/jpa
+    https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+  <jpa:repositories base-package="com.demo.repositories[Repository-Package]" 
+  	entity-manager-factory-ref="<Factory-Manager>" 
+  	transaction-manager-ref="<Transaction-Manager>" />
+  
+</beans>
+
+entity-manager-factory-ref
+--------------------------
+
+Can wire explicitly EntityManagerFactory, repositories element will detect it automatically
+Usually used if multiple EntityManagerFactory beans are used within the application
+
+If not configured, Spring Data automatically looks up the EntityManagerFactory bean with 
+the name entityManagerFactory in the ApplicationContext
+
+transaction-manager-ref
+-----------------------
+Explicitly wire the PlatformTransactionManager, usually needed if multiple transaction 
+managers or EntityManagerFactory beans have been configured
+=>Default from ApplicationContext
+
+
+JPA Repository Using Java Configuration
+---------------------------------------
+
+We creates a @Configuration class with below beans-
+1. DataSource bean
+2. EntityManagerFactory bean
+3. TransactionManager bean
+
+Refer below implemented class-
+
+com.starter.jpa.service.config.CustomJpaRepositoryConfig
+
+Bootstrap/Flow Mode
+===================
+1. By default, Spring Data JPA repositories are default Spring beans
+2. They are singleton scoped and eagerly initialized
+3. [JPA 2.1] We can now configure BootstrapMode using @EnableJpaRepositories
+
+
+During startup
+--------------
+	1. Repositories interact with the JPA EntityManager, 
+	   for verification and metadata analysis purposes
+	
+	2. Spring initializes EntityManagerFactory, in a background thread because that process 
+	   usually takes up a significant amount of startup time in a Spring application
+
+
+Entity State-detection Strategies
+---------------------------------
+
+1. Version-Property and Id-Property inspection (default)
+2. Implementing Persistable
+3. Implementing EntityInformation
+
+
+

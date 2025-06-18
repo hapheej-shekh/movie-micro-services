@@ -1,0 +1,24 @@
+Property Refresh Management
+===========================
+
+Refresh of property withour re-starting client server (Our Application which uses remote config property)
+
+1. Add Actuators to dependency
+
+2. Run Cloud Server & Application Client both
+
+3. Update Property and commit
+
+4. Cloud server will reflect updated property, but Application Client will not
+
+5. Annotate Configuration/Controller classes with @RefreshScope
+	[Using @RefreshScope Actuator will refresh property]
+	
+6. To update/refresh property for Application Client, Call below POST method of Actuators
+	
+	=>http://<Host:Port>/<App-Name>/actuator/refresh
+	=> http://localhost:8084/cloud-config-service/actuator/refresh
+
+7. Now we will get updated properties
+
+

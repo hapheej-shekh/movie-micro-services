@@ -1,0 +1,21 @@
+
+Url-> http://localhost:8085/starter-jpa-service/AllJoinTest/oneToMany
+
+Data
+----
+{
+	"id":5,
+	"name":"Arham",
+	"depart":"IT",
+	"library2":[{
+		"id":2,
+		"name":"Java",
+		"location":"Central Lib"
+	},{
+		"id":3,
+		"name":"Java",
+		"location":"Central Lib"
+	}]
+}
+
+

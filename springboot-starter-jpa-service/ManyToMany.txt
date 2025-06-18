@@ -1,0 +1,38 @@
+
+Url-> http://localhost:8085/starter-jpa-service/AllJoinTest/manyToManyStudent
+
+
+Data-1
+------
+{
+	"id":6,
+	"name":"Arham",
+	"depart":"IT",
+	"library4":[{
+		"id":10,
+		"name":"Java",
+		"location":"Central Lib"
+	},{
+		"id":11,
+		"name":"Java",
+		"location":"Central Lib"
+	}]
+}
+
+Data-2
+------
+{
+	"id":7,
+	"name":"Arham",
+	"depart":"IT",
+	"library4":[{
+		"id":10,
+		"name":"Java",
+		"location":"Central Lib"
+	},{
+		"id":11,
+		"name":"Java",
+		"location":"Central Lib"
+	}]
+}
+
