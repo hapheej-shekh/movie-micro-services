@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +29,10 @@ public class MovieCatalogResourceRestTemplate {
 	@Autowired
 	private RestTemplate template;
 	@Autowired
+	@Qualifier("resilienceMovieInfoService")	//hystrixMovieInfoService
 	private MovieInfoService movieInfoService;
 	@Autowired
+	@Qualifier("resilienceRatingService")	//hystrixRatingService
 	private MovieRatingService ratingService;
 	
 	
