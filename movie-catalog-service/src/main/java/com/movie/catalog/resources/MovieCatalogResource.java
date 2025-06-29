@@ -50,7 +50,7 @@ public class MovieCatalogResource {
 		//Using WebClient
 		
 		try {
-			movies = builder.build().get().uri("http://localhost:8082/movie-info/findAll")
+			movies = builder.build().get().uri("http://movie-info-service/movie-info/findAll")
 			.retrieve().toEntityList(Movie.class).block();
 		} catch(Exception ex) {
 			List<Movie> lst = new ArrayList<>();
@@ -61,7 +61,7 @@ public class MovieCatalogResource {
 			
 			Rating rating = null;
 			try {
-				rating = builder.build().get().uri("http://localhost:8083/movie-rating/find?id="+movie.getId())
+				rating = builder.build().get().uri("http://movie-rating-service/movie-rating/find?id="+movie.getId())
 					.retrieve().bodyToMono(Rating.class).block();
 			} catch(Exception ex) {
 				rating = new Rating();

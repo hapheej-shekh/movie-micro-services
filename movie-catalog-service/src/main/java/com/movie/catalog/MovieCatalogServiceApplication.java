@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-@EnableEurekaClient
+@EnableEurekaClient		// optional from Spring Cloud 2020 onwards
 @EnableCircuitBreaker	// Enables Hystrix Circuit Breaker support
 @EnableHystrix	// Enables circuit breaker and @HystrixCommand support
 @EnableHystrixDashboard	// http://localhost:<PORT>/movie-catalog/hystrix
@@ -44,6 +44,7 @@ public class MovieCatalogServiceApplication {
 	}
 	
 	@Bean
+	@LoadBalanced
 	public WebClient.Builder userDefinedBuilder(){
 		return WebClient.builder();
 	}

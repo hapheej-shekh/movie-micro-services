@@ -28,7 +28,7 @@
 	    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 	</dependency>
 
-	<!-- To get remote properties configuration Usig SB cloud -->
+	<!-- To get remote properties configuration Using SB cloud -->
 	<dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-config</artifactId>

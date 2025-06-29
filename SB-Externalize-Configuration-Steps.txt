@@ -11,7 +11,7 @@ Properties From Command Arguments
 2. Place application.properties file parallel to Application Jar File
 =>Springboot will override values of internal file with external supplied file
 
-3. java -jar -Dspring.config.name=dbconfig -Dspring.config.locatio=D:\config myjar.jar
+3. java -jar -Dspring.config.name=dbconfig -Dspring.config.location=D:\config myjar.jar
 => Springboot will read file from supplied location with provided name
 
 4. Specify active profile from command line
