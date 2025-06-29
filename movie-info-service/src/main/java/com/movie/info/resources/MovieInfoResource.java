@@ -18,7 +18,6 @@ import com.movie.info.beans.Movies;
 import com.movie.info.repositories.MovieCatalogRepository;
 
 @RestController
-
 public class MovieInfoResource {
 
 	@Autowired
@@ -54,6 +53,7 @@ public class MovieInfoResource {
 		return movieCatalog.findAll();
 	}
 	
+	@SuppressWarnings("unused")
 	private List<Movie> init() {
 		
 		List<Movie> items = new ArrayList<>();

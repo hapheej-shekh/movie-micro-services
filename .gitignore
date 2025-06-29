@@ -41,3 +41,15 @@ hs_err_pid*
 /jpa-hibernate-service/.settings/org.eclipse.jpt.core.prefs
 /jpa-hibernate-service/.settings
 /bin/
+/movie-rating-service/*.project
+/default-springboot-security/.gitattributes
+/.project
+/eureka-discovery-server/.classpath
+/eureka-discovery-server/*.project
+/jpa-hibernate-service/*.classpath
+/jpa-hibernate-service/*.project
+/movie-catalog-service/*.classpath
+/movie-catalog-service/*.project
+/movie-info-service/*.classpath
+/movie-info-service/*.project
+/movie-rating-service/*.classpath
