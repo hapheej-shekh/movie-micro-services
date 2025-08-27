@@ -5,6 +5,7 @@ resilience4j:
   circuitbreaker:
     instances:
       movie-rating-service:
+        base-path: /movie-rating
         register-health-indicator: true
         sliding-window-size: 5
         minimum-number-of-calls: 3
@@ -19,6 +20,7 @@ resilience4j:
           - java.lang.IllegalArgumentException
 
       movie-info-service:
+        base-path: /movie-info
         register-health-indicator: true
         sliding-window-size: 5
         minimum-number-of-calls: 3
