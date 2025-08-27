@@ -1,6 +1,12 @@
 # resilience4j + retry + circuit-breaker rules
 # Use @CircuitBreaker, @Retry by providing service-name, in Service class
 
+movie-rating-service:
+  base-path: /movie-rating
+
+movie-info-service:
+  base-path: /movie-info
+
 resilience4j:
   circuitbreaker:
     instances:
