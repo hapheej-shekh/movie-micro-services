@@ -1,0 +1,38 @@
+# resilience4j + retry + circuit-breaker rules
+# Use @CircuitBreaker, @Retry by providing service-name, in Service class
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      movie-rating-service:
+        register-health-indicator: true
+        sliding-window-size: 5
+        minimum-number-of-calls: 3
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 2
+        record-exceptions:
+          - java.net.ConnectException
+          - java.net.SocketTimeoutException
+          - org.springframework.web.client.HttpServerErrorException
+        ignore-exceptions:
+          - java.lang.IllegalArgumentException
+
+      movie-info-service:
+        register-health-indicator: true
+        sliding-window-size: 5
+        minimum-number-of-calls: 3
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 2
+
+  retry:
+    instances:
+      movie-rating-service:
+        max-attempts: 3          # retry 3 times
+        wait-duration: 1s        # wait 1 sec between retries
+        
+      movie-info-service:
+        max-attempts: 3          # retry 3 times
+        wait-duration: 1s        # wait 1 sec between retries
+        
