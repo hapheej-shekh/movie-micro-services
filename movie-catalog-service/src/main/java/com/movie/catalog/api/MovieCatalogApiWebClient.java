@@ -1,4 +1,4 @@
-package com.movie.catalog.resources;
+package com.movie.catalog.api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import com.movie.catalog.beans.Rating;
 
 @RestController
 @RequestMapping("webclient")
-public class MovieCatalogResource {
+public class MovieCatalogApiWebClient {
 
 	@Autowired
 	private WebClient.Builder builder; //WebClient instead of RestTemplate

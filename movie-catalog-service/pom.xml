@@ -22,6 +22,7 @@
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	<spring-cloud.version>2021.0.3</spring-cloud.version>
+	<resilience4j.version>1.7.0</resilience4j.version>
   </properties>
   
   <dependencies>
@@ -87,42 +88,58 @@
 	    <artifactId>spring-boot-starter-aop</artifactId>
 	</dependency>
 	
+	
 	<!-- Resilience4j Spring Boot Integration -->
 	<dependency>
 	    <groupId>io.github.resilience4j</groupId>
 	    <artifactId>resilience4j-spring-boot2</artifactId>
-	    <version>1.7.0</version>
+	    <version>${resilience4j.version}</version>
 	</dependency>
 	
 	<!-- Core Resilience4j modules -->
 	<dependency>
 	    <groupId>io.github.resilience4j</groupId>
-	    <artifactId>resilience4j-retry</artifactId>
-	    <version>1.7.0</version>
+	    <artifactId>resilience4j-core</artifactId>
+	    <version>${resilience4j.version}</version>
 	</dependency>
-	
+	<dependency>
+	    <groupId>io.github.resilience4j</groupId>
+	    <artifactId>resilience4j-retry</artifactId>
+	    <version>${resilience4j.version}</version>
+	</dependency>
 	<dependency>
 	    <groupId>io.github.resilience4j</groupId>
 	    <artifactId>resilience4j-circuitbreaker</artifactId>
-	    <version>1.7.0</version>
+	    <version>${resilience4j.version}</version>
 	</dependency>
-	
 	<dependency>
 	    <groupId>io.github.resilience4j</groupId>
 	    <artifactId>resilience4j-timelimiter</artifactId>
-	    <version>1.7.0</version>
+	    <version>${resilience4j.version}</version>
 	</dependency>
-	
 	<dependency>
 	    <groupId>io.github.resilience4j</groupId>
 	    <artifactId>resilience4j-ratelimiter</artifactId>
-	    <version>1.7.0</version>
+	    <version>${resilience4j.version}</version>
 	</dependency>
-	
 	<dependency>
 	    <groupId>io.github.resilience4j</groupId>
 	    <artifactId>resilience4j-bulkhead</artifactId>
-	    <version>1.7.0</version>
+	    <version>${resilience4j.version}</version>
+	</dependency>
+	
+	<!-- For Decorators support	-->
+	<dependency>
+		<groupId>io.github.resilience4j</groupId>
+		<artifactId>resilience4j-all</artifactId>
+		<version>${resilience4j.version}</version>
+	</dependency>
+
+
+	<!-- FeignClient like @LoadBalanced RestTemplate to communicate between Services	-->
+	<dependency>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-starter-openfeign</artifactId>
 	</dependency>
 
   </dependencies>
@@ -139,4 +156,19 @@
 	    </dependencies>
 	</dependencyManagement>
 	
+	  <build>
+		  <plugins>
+		    <plugin>
+		      <groupId>org.springframework.boot</groupId>
+		      <artifactId>spring-boot-maven-plugin</artifactId>
+		      <executions>
+		        <execution>
+		          <goals>
+		            <goal>repackage</goal>
+		          </goals>
+		        </execution>
+		      </executions>
+		    </plugin>
+		  </plugins>
+	  </build>
 </project>

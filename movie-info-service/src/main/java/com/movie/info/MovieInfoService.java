@@ -10,10 +10,10 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient	// Enables service registration and discovery for app
-public class MovieInfoServiceApplication {
+public class MovieInfoService {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovieInfoServiceApplication.class, args);
+		SpringApplication.run(MovieInfoService.class, args);
 	}
 	
 	@Bean

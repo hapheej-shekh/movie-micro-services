@@ -20,7 +20,7 @@ public class MovieRatingResource {
 
 	@Autowired
 	private MovieRatingRepository movieCatalogRepo;
-	private boolean flag = false;//One Time DB Initialization Only
+	private boolean flag = false;	//One Time DB Initialization Only
 	
 	@RequestMapping(value="find", method = RequestMethod.GET)
 	public ResponseEntity<Rating> getRating(@RequestParam("id") int id) {
@@ -37,23 +37,25 @@ public class MovieRatingResource {
 			movieCatalogRepo.saveAll(ratings);
 			flag = false;
 		}
-		//To Check Hystrix Work
+		
 		try {
-			//Thread.currentThread().wait(4000);
+			// Test circuit breaker/fallback, Hystrix Work
+			// Thread.sleep(4000);
 		}catch(Exception e) {}
+		
 		Rating rating = null;
 		
 		Optional<Rating> list = movieCatalogRepo.findById(id);
 		if(list.isPresent())
 			rating = list.get();
 		
-		return new ResponseEntity<Rating>(rating, HttpStatus.FOUND);
+		return new ResponseEntity<Rating>(rating, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="rating", method = RequestMethod.GET)
 	public ResponseEntity<List<Rating>> getMoviess() {
 		
-		return new ResponseEntity<List<Rating>>(movieCatalogRepo.findAll(), HttpStatus.FOUND);
+		return new ResponseEntity<List<Rating>>(movieCatalogRepo.findAll(), HttpStatus.OK);
 	}
 	
 	private List<Rating> init() {

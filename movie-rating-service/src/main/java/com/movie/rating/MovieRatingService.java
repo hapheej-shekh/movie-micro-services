@@ -10,9 +10,9 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 @EntityScan(basePackages = {"com.jpa.service.beans"})
 @ComponentScan(basePackages = {"com.movie.rating", "com.jpa.service"})
-public class MovieRatingServiceApplication {
+public class MovieRatingService {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovieRatingServiceApplication.class, args);
+		SpringApplication.run(MovieRatingService.class, args);
 	}
 }

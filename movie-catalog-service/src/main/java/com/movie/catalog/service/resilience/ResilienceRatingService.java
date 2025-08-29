@@ -1,10 +1,11 @@
-package com.movie.catalog.service;
+package com.movie.catalog.service.resilience;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.movie.catalog.beans.Rating;
+import com.movie.catalog.service.MovieRatingService;
 
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;

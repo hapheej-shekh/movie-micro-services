@@ -21,11 +21,13 @@
   <modules>
     <module>movie-info-service</module>
     <module>movie-catalog-service</module>
+    <module>movie-catalog-service-reactive</module>
     <module>movie-rating-service</module>
     <module>eureka-discovery-server</module>
 	<module>spring-cloud-config-server</module>
 	<module>springboot-starter-jpa-service</module>
     <module>jpa-hibernate-service</module>
     <module>test-cloud-config</module>
+    <module>default-springboot-security</module>
   </modules>
 </project>

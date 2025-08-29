@@ -12,12 +12,12 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class DiscoveryServerApplication {
+public class EurekaDiscoveryServer {
 
 	/*	http://localhost:<PORT>/	-> To check Eureka details */
 	
 	public static void main(String[] args) {
-		SpringApplication.run(DiscoveryServerApplication.class, args);
+		SpringApplication.run(EurekaDiscoveryServer.class, args);
 	}
 
 }

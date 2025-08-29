@@ -1,4 +1,4 @@
-package com.movie.catalog.service;
+package com.movie.catalog.service.resilience;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.movie.catalog.beans.Movie;
 import com.movie.catalog.beans.Rating;
+import com.movie.catalog.service.MovieInfoService;
 
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;

@@ -1,4 +1,4 @@
-package com.movie.catalog.service;
+package com.movie.catalog.service.hystrix;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.movie.catalog.beans.Movie;
 import com.movie.catalog.beans.Rating;
+import com.movie.catalog.service.MovieInfoService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 

@@ -1,4 +1,4 @@
-package com.movie.catalog.resources;
+package com.movie.catalog.api;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,15 +24,15 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RequestMapping("resttemplate")
-public class MovieCatalogResourceRestTemplate {
+public class MovieCatalogApiRestTemplate {
 
 	@Autowired
 	private RestTemplate template;
 	@Autowired
-	@Qualifier("resilienceMovieInfoService")	//hystrixMovieInfoService
+	@Qualifier("resilienceMovieInfoService")	//resilienceMovieInfoService
 	private MovieInfoService movieInfoService;
 	@Autowired
-	@Qualifier("resilienceRatingService")	//hystrixRatingService
+	@Qualifier("hystrixRatingService")	//hystrixRatingService
 	private MovieRatingService ratingService;
 	
 	
@@ -43,7 +43,7 @@ public class MovieCatalogResourceRestTemplate {
 		
 		Movie[] ratedMovies = movieInfoService.getMovieInfo();
 		
-		restTemplateResult =Arrays.stream(ratedMovies).map(movie->{
+		restTemplateResult = Arrays.stream(ratedMovies).map(movie->{
 			
 			Rating rating = ratingService.getRatingInfo(movie.getId());
 			return new CatalogItem(movie.getId(), movie.getName(), movie.getDesc(), rating.getRating(), rating.getRatingDesc());

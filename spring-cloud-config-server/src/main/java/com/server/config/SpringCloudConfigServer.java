@@ -6,10 +6,11 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootApplication
 @EnableConfigServer
-public class SpringCloudConfigServerApplication {
+public class SpringCloudConfigServer {
 
 	// http:localhost<PORT>/<property-file-name(application-dev)>/<profile(default/dev/qa)>
+	
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCloudConfigServerApplication.class, args);
+		SpringApplication.run(SpringCloudConfigServer.class, args);
 	}
 }
