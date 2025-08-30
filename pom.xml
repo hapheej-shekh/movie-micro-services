@@ -21,7 +21,7 @@
   <modules>
     <module>movie-info-service</module>
     <module>movie-catalog-service</module>
-    <module>movie-catalog-service-reactive</module>
+    <module>movie-reactive-catalog</module>
     <module>movie-rating-service</module>
     <module>eureka-discovery-server</module>
 	<module>spring-cloud-config-server</module>
