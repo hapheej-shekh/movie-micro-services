@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true          # Dynamic route discovery from Eureka
+          lower-case-service-id: true  # Ensure service IDs are lowercase
+
+      routes:
+        - id: movie-rating
+          uri: lb://movie-rating-service
+          predicates:
+            - Path=/gateway/movie-rating/**
+          filters:
+            - name: StripPrefix
+              args:
+                parts: 1
+
+        - id: movie-info
+          uri: lb://movie-info-service
+          predicates:
+            - Path=/gateway/movie-info/**
+          filters:
+            - name: StripPrefix
+              args:
+                parts: 1
+
+
+

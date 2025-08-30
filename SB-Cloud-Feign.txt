@@ -1,0 +1,9 @@
+		Feign
+	------------
+
+FeignClient also known as Spring Cloud OpenFeign is a Declarative REST Client in Spring Boot Web Application
+
+Declarative REST Client?
+------------------------
+It means we need to specify the client specification as an Interface and Spring Boot will take care of the implementation for us.
+

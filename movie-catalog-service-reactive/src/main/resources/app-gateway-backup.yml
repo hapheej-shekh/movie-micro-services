@@ -1,0 +1,67 @@
+spring:
+  cloud:
+    gateway:
+      
+      # ------------------------------
+      # Dynamic discovery of services
+      # ------------------------------
+      discovery:
+        locator:
+          enabled: true          # Automatically create routes for all services in Eureka
+          lower-case-service-id: true  # Normalize service IDs to lowercase for consistent URLs
+
+      # ------------------------------
+      # Manual route configuration (optional)
+      # ------------------------------
+      routes:
+        # Route for Movie Rating Service
+        - id: movie-rating
+          uri: lb://movie-rating-service   # lb:// indicates Eureka lookup
+          predicates:
+            - Path=/gateway/movie-rating/**   # match incoming URL
+          filters:
+            - name: StripPrefix
+              args:
+                parts: 1                       # remove '/gateway' before sending to backend
+            - name: CircuitBreaker
+              args:
+                name: movie-rating-cb          # Circuit breaker instance name
+                fallbackUri: forward:/fallback/movie-rating
+            - name: Retry
+              args:
+                retries: 3                     # Retry 3 times on failure
+                statuses: BAD_GATEWAY, INTERNAL_SERVER_ERROR
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 5
+                redis-rate-limiter.burstCapacity: 10
+
+        # Route for Movie Info Service
+        - id: movie-info
+          uri: lb://movie-info-service
+          predicates:
+            - Path=/gateway/movie-info/**
+          filters:
+            - name: StripPrefix
+              args:
+                parts: 1
+            - name: CircuitBreaker
+              args:
+                name: movie-info-cb
+                fallbackUri: forward:/fallback/movie-info
+            - name: Retry
+              args:
+                retries: 3
+                statuses: BAD_GATEWAY, INTERNAL_SERVER_ERROR
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 5
+                redis-rate-limiter.burstCapacity: 10
+
+
+# Any call to /gateway/movie-rating/** goes to movie-rating-service
+# Any call to /gateway/movie-info/** goes to movie-info-service
+
+
+
+
