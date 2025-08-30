@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>movie-catalog-service-reactive</groupId>
+	<groupId>com.movie.catalog.reactive</groupId>
 	<artifactId>movie-catalog-service-reactive</artifactId>
 	
 	<name>movie-catalog-service-reactive</name>

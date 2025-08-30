@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
-  <groupId>movie-catalog-service</groupId>
+  <groupId>com.movie.catalog</groupId>
   <artifactId>movie-catalog-service</artifactId>
   <!-- <version>0.0.1-SNAPSHOT</version> -->
   <name>movie-catalog-service</name>

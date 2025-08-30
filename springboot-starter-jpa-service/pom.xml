@@ -10,7 +10,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
   
-	<groupId>com.jpa.service</groupId>
+	<groupId>com.starter.jpa.service</groupId>
 	<artifactId>springboot-starter-jpa-service</artifactId>
 	<name>springboot-starter-jpa-service</name>
 	<description>JPA project for Spring Boot</description>

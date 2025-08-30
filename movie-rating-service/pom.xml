@@ -10,7 +10,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
-  <groupId>movie-rating-service</groupId>
+  <groupId>com.movie.rating</groupId>
   <artifactId>movie-rating-service</artifactId>
   <!-- <version>0.0.1-SNAPSHOT</version> -->
   <name>movie-rating-service</name>
